@@ -1,0 +1,30 @@
+.loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+
+  .line {
+    background-color: rgb(112, 111, 111);
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    animation: tup 0.5s ease-in infinite;
+  }
+  .line:nth-child(2) {
+    animation-delay: 100ms;
+  }
+  .line:nth-child(3) {
+    animation-delay: 200ms;
+  }
+
+  @keyframes tup {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
