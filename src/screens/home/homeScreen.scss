@@ -1,0 +1,7 @@
+.homeScreen {
+  background-color: rgb(235, 234, 235);
+  min-height: calc(100vh - 100px);
+  .projects {
+    display: flex;
+  }
+}
