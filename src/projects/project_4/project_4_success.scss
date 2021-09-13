@@ -1,0 +1,20 @@
+.project_4_success {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: darkcyan;
+  position: relative;
+  .cont {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    background-color: white;
+    height: 200px;
+    border-radius: 5px;
+    text-transform: capitalize;
+    font-size: 20px;
+    // width: 100%;
+  }
+}

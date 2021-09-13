@@ -9,8 +9,12 @@ const Project_3 = () => {
   const [per_page, setPerPage] = useState(10);
   const [popImage, setPopImage] = useState(null);
 
+  const [startSearch, setStartSearch] = useState(false);
+
   const [category, setCategory] = useState('');
   const access_id = 'zcUGsCgU-xujL0JhrLZCVAsRfBi-MYbxZRHsvJL4egY';
+
+  console.log('Category is ', category);
 
   useEffect(() => {
     let token;
@@ -33,12 +37,7 @@ const Project_3 = () => {
 
     loadImage();
     return () => token();
-  }, [category, page, per_page]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setCategory('');
-  };
+  }, [startSearch, page, per_page]);
 
   const handlePopImageClose = (e) => {
     console.log(e.target.classList.contains('popup'));
@@ -54,20 +53,29 @@ const Project_3 = () => {
     if (totalHeight === innerHeight + scrollFromTop) {
       setPage((prev) => prev + 1);
     }
-    console.log({ innerHeight, scrollFromTop, totalHeight });
+  };
+
+  const handleSearch = (e) => {
+    console.log(e);
+    console.log(e.key);
+    if (e.key === 'Enter') {
+      setPhotos([]);
+      setStartSearch((prev) => !prev);
+    }
   };
 
   return (
     <div className="project_3">
       <h3>PhotoGram</h3>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Search whater you want..."
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        />
-      </form>
+
+      <input
+        type="text"
+        placeholder="Search whatever you want..."
+        // value={category}
+        onChange={(e) => setCategory(e.target.value)}
+        onKeyPress={handleSearch}
+      />
+
       {/* pop up */}
       {popImage && (
         <div className="modal">
@@ -84,7 +92,7 @@ const Project_3 = () => {
       <div className="images-container">
         {photos.map((dt) => (
           <div
-            key={dt.id}
+            // key={dt.id}
             className="image"
             onClick={() => setPopImage(dt.urls.regular)}
           >
