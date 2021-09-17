@@ -12,6 +12,7 @@ const projectsInfo = [
   { id: 5, title: 'Blurry Loading', url: '/project/5' },
   { id: 6, title: 'Strong Password Check', url: '/project/6' },
   { id: 7, title: 'Expanding Card', url: '/project/7' },
+  { id: 8, title: 'Course Card', url: '/project/8' },
 ];
 
 const HomeScreen = () => {

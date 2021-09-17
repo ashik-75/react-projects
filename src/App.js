@@ -9,12 +9,14 @@ import Project_4_success from './projects/project_4/Project_4_success';
 import Project_5 from './projects/project_5/Project_5';
 import Project_6 from './projects/project_6/Project_6';
 import Project_7 from './projects/project_7/Project_7';
+import Project_8 from './projects/project_8/Project_8';
 import HomeScreen from './screens/home/HomeScreen';
 
 const App = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/project/8" component={Project_8} />
         <Route path="/project/7" component={Project_7} />
         <Route path="/project/6" component={Project_6} />
         <Route path="/project/5" component={Project_5} />

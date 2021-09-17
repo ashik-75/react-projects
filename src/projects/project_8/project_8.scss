@@ -1,0 +1,114 @@
+.project_8 {
+  min-height: 100vh;
+  background-color: blue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .card {
+    position: relative;
+    width: 60%;
+    height: 200px;
+    background-color: whitesmoke;
+    border-radius: 5px;
+    overflow: hidden;
+    display: flex;
+
+    .left {
+      width: 30%;
+      height: 100%;
+      background-color: rgb(21, 7, 83);
+      padding: 20px;
+      color: white;
+      .tag {
+        font-size: 16px;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+      .title {
+        font-size: 28px;
+        margin-bottom: 30px;
+      }
+      .details-menu {
+        font-size: 14px;
+        cursor: pointer;
+        &:hover {
+          transform: translateX(2px);
+        }
+      }
+    }
+    .right {
+      width: 70%;
+      height: 100%;
+
+      padding: 20px;
+      color: rgb(8, 3, 29);
+      .top {
+        display: flex;
+        align-items: center;
+        // justify-content: space-between;
+        margin-bottom: 20px;
+        .chapter {
+          flex: 1;
+          color: rgb(46, 44, 44);
+          text-transform: uppercase;
+          font-size: 15px;
+        }
+        .progress {
+          flex: 1;
+          text-align: right;
+          .progress-bar {
+            width: 200px;
+            height: 7px;
+            background-color: #ddd;
+            // margin-bottom: 5px;
+            border-radius: 5px;
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            &::after {
+              content: '';
+              position: absolute;
+              top: 0px;
+              left: 0px;
+              border-radius: 5px;
+
+              width: 60%;
+              height: 7px;
+              //   z-index: 4;
+              background-color: rgb(25, 8, 65);
+            }
+          }
+          font-size: 10px;
+          color: rgb(46, 44, 44);
+        }
+      }
+      .center {
+        font-size: 25px;
+        font-weight: 500;
+        width: 60%;
+        letter-spacing: 2px;
+        line-height: 30px;
+      }
+      .bottom {
+        position: absolute;
+        bottom: 40px;
+        right: 40px;
+        button {
+          padding: 10px 15px;
+          border-radius: 20px;
+          background-color: rgb(21, 7, 83);
+          color: white;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          font-size: 20px;
+          transition: all 500ms ease;
+
+          &:hover {
+            transform: translateX(10px);
+          }
+        }
+      }
+    }
+  }
+}
