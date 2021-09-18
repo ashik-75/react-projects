@@ -8,7 +8,7 @@ const Project = ({ data }) => {
         <img src="" alt="" />
       </div>
       <div className="title">
-        <Link to={data.url} target="_blank">
+        <Link className="link" to={data.url} target="_blank">
           {data.title}
         </Link>
       </div>

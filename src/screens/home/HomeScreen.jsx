@@ -13,8 +13,8 @@ const projectsInfo = [
   { id: 6, title: 'Strong Password Check', url: '/project/6' },
   { id: 7, title: 'Expanding Card', url: '/project/7' },
   { id: 8, title: 'Course Card', url: '/project/8' },
-  { id: 9, title: 'Carousel', url: '/project/9' },
-  { id: 10, title: 'Newslater', url: '/project/10' },
+  // { id: 9, title: 'Carousel', url: '/project/9' },
+  // { id: 10, title: 'Newslater', url: '/project/10' },
 ];
 
 const HomeScreen = () => {
