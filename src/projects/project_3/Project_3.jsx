@@ -68,15 +68,16 @@ const Project_3 = () => {
     <div className="project_3">
       <h3>PhotoGram</h3>
 
-      <input
-        type="text"
-        placeholder="Search whatever you want..."
-        // value={category}
-        onChange={(e) => setCategory(e.target.value)}
-        onKeyPress={handleSearch}
-      />
+      <div className="search">
+        <input
+          type="text"
+          placeholder="Search whatever you want..."
+          // value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          onKeyPress={handleSearch}
+        />
+      </div>
 
-      {/* pop up */}
       {popImage && (
         <div className="modal">
           <span onClick={() => setPopImage(null)}>
