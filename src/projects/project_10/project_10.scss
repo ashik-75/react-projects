@@ -1,2 +1,62 @@
 .project_10 {
+  padding: 50px;
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    thead {
+      tr {
+        background-color: #ddd;
+        th {
+          padding: 10px;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td {
+          text-align: center;
+          padding: 10px;
+          border: 1px solid #ddd;
+          border-top: none;
+          button {
+            padding: 8px 10px;
+            border: none;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+
+    @media screen and (max-width: 800px) {
+      thead {
+        display: none;
+      }
+
+      tbody {
+        tr {
+          display: block;
+          margin-bottom: 50px;
+          //   position: relative;
+        }
+
+        tr td {
+          display: block;
+          width: 100%;
+          position: relative;
+          //   right: 10px;
+          text-align: right;
+          &:first-child {
+            border-top: 1px solid #ddd;
+          }
+        }
+
+        tr td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          position: absolute;
+          left: 10px;
+        }
+      }
+    }
+  }
 }

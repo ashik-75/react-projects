@@ -1,17 +1,51 @@
 .project {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30%;
-  height: 300px;
-  // box-sizing: border-box;
-  // margin: 20px;
-  background-color: rgb(241, 243, 241);
   margin-bottom: 5%;
-  @media screen and (max-width: 800px) {
-    width: 45%;
-  }
-  @media screen and (max-width: 500px) {
+  width: 30%;
+  // display: flex;
+  height: 300px;
+  .card {
     width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: all 0.5s ease-in;
+
+    .img {
+      width: 100%;
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+        // padding: 40px;
+        object-position: center;
+        object-fit: cover;
+      }
+    }
+    .title {
+      font-size: 25px;
+      position: absolute;
+      font-weight: bold;
+      text-align: center;
+
+      z-index: -1;
+    }
+
+    &:hover {
+      background-color: rgb(60, 60, 136);
+      cursor: pointer;
+      img {
+        opacity: 0.3;
+        z-index: 0;
+      }
+
+      .title {
+        z-index: 1;
+        color: white;
+      }
+    }
   }
 }

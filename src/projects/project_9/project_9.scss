@@ -1,2 +1,58 @@
 .project_9 {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+
+  .fas {
+    position: absolute;
+    font-size: 30px;
+    color: crimson;
+    top: 50%;
+    cursor: pointer;
+    // transform: translateY(-50%);
+    &:hover {
+      opacity: 0.5;
+    }
+    @media screen and (max-width: 800px) {
+      font-size: 20px;
+    }
+  }
+  .fa-arrow-right {
+    right: 40px;
+  }
+  .fa-arrow-left {
+    left: 40px;
+  }
+  .slider-container {
+    width: 100%;
+    height: 75%;
+    // background-color: #ddd;
+    display: flex;
+    position: absolute;
+    // transform: translateX();
+    transition: all 500ms ease-in;
+    left: 0;
+    .container {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .slider {
+        height: 80%;
+        width: 50%;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
 }

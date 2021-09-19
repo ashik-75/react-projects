@@ -4,14 +4,14 @@ import { Link } from 'react-router-dom';
 const Project = ({ data }) => {
   return (
     <div className="project">
-      <div className="image">
-        <img src="" alt="" />
-      </div>
-      <div className="title">
-        <Link className="link" to={data.url} target="_blank">
-          {data.title}
-        </Link>
-      </div>
+      <Link target="_blank" className="link" to={data.url}>
+        <div className="card">
+          <div className="img">
+            <img src={data.imgUrl} alt="" />
+          </div>
+          <div className="title">{data.title}</div>
+        </div>
+      </Link>
     </div>
   );
 };
