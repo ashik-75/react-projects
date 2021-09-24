@@ -35,6 +35,8 @@ const projectsInfo = [
   { id: 8, imgUrl: '', title: 'Course Card', url: '/project/8' },
   { id: 9, title: 'Carousel', url: '/project/9' },
   { id: 10, title: 'responsive table', url: '/project/10' },
+  { id: 11, title: 'Toggle Menu', url: '/project/11' },
+  { id: 12, title: 'Modal/Popup', url: '/project/12' },
 ];
 
 for (let i = 0; i < projectsInfo.length; i++) {

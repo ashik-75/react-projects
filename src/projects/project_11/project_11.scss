@@ -1,44 +1,66 @@
 .project_11 {
   min-height: 100vh;
-  background: url('https://images.unsplash.com/photo-1531554694128-c4c6665f59c2?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGFwcGxlJTIwcHJvZHVjdHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60')
+  background: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8c2hvcHxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1300&q=60')
     no-repeat center center/cover;
-  position: relative;
-
-  transition: all 0.5s ease;
-  .sidebar {
+  .container {
+    box-sizing: border-box;
+    height: 100vh;
     width: 200px;
-    height: 100%;
-    background-color: coral;
+    background-color: #152d35;
     position: fixed;
+    top: 0;
     left: 0;
+    color: white;
+    padding: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    ul {
-      list-style-type: none;
-      li {
-        font-size: 18px;
-        margin-bottom: 10px;
-        cursor: pointer;
+    transition: transform 0.5s ease;
+    button {
+      border: none;
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      right: 0;
+      font-size: 30px;
+      padding: 10px 20px;
+      transform: translateX(100%);
+      background-color: rgb(223, 222, 222);
+      .fa-times {
+        display: block;
+      }
+      .fa-bars {
+        display: none;
       }
     }
-  }
-  .fa-times {
-    position: absolute;
-    padding: 10px;
-    cursor: pointer;
-    left: 200px;
-    color: white;
-    font-size: 40px;
-    background-color: black;
-  }
-  .fa-bars {
-    position: absolute;
-    padding: 10px;
-    cursor: pointer;
-    left: 0px;
-    color: white;
-    font-size: 40px;
-    background-color: black;
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      li {
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        font-size: 25px;
+        cursor: pointer;
+        &:hover {
+          color: goldenrod;
+        }
+      }
+    }
+
+    &.collapse {
+      transform: translateX(-100%);
+      button {
+        .fa-times {
+          display: none;
+        }
+        .fa-bars {
+          display: block;
+        }
+        &:focus {
+          outline-style: none;
+        }
+      }
+    }
   }
 }

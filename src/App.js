@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Loader from './components/loader/Loader';
 import Project_1 from './projects/project_1/Project_1';
 import Project_10 from './projects/project_10/Project_10';
 import Project_11 from './projects/project_11/Project_11';
+import Project_12 from './projects/project_12/Project_12';
 import Project_2 from './projects/project_2/Project_2';
 import Project_3 from './projects/project_3/Project_3';
 import Project_4 from './projects/project_4/Project_4';
@@ -19,6 +19,7 @@ const App = () => {
   return (
     <Router>
       <Switch>
+        <Route path="/project/12" component={Project_12} />
         <Route path="/project/11" component={Project_11} />
         <Route path="/project/10" component={Project_10} />
         <Route path="/project/9" component={Project_9} />
