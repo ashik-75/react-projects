@@ -1,5 +1,4 @@
 import './topbar.scss';
-import { Link } from 'react-router-dom';
 
 const Topbar = () => {
   return (
