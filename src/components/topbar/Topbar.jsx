@@ -20,15 +20,25 @@ const Topbar = () => {
           </ul>
         </div>
         <div className="social-icon">
-          <Link to="#" className="link">
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://www.facebook.com/ashikurrahmansweet"
+            className="link"
+          >
             <i className="fab fa-facebook-square"></i>
-          </Link>
-          <Link to="#git" className="link">
+          </a>
+          <a
+            target="_blank"
+            rel="noreferrer"
+            href="https://github.com/ashikranasweet"
+            className="link"
+          >
             <i className="fab fa-github"></i>
-          </Link>
-          <Link to="#linked" className="link">
+          </a>
+          <a rel="noreferrer" href="#linked" className="link">
             <i className="fab fa-linkedin"></i>
-          </Link>
+          </a>
         </div>
       </div>
     </div>

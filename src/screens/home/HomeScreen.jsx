@@ -1,6 +1,6 @@
 import React from 'react';
 import Topbar from '../../components/topbar/Topbar';
-import { Link } from 'react-router-dom';
+
 import './homeScreen.scss';
 import Project from '../../components/project/Project';
 
@@ -37,13 +37,12 @@ const projectsInfo = [
   { id: 10, title: 'responsive table', url: '/project/10' },
   { id: 11, title: 'Toggle Menu', url: '/project/11' },
   { id: 12, title: 'Modal/Popup', url: '/project/12' },
+  { id: 13, title: 'order list', url: '/project/13' },
 ];
 
 for (let i = 0; i < projectsInfo.length; i++) {
   projectsInfo[i].imgUrl = `/images/${i + 1}.png`;
 }
-
-console.log(projectsInfo);
 
 const HomeScreen = () => {
   return (

@@ -1,0 +1,208 @@
+.project_14 {
+  .navbar {
+    height: 100px;
+    padding: 0px 30px;
+    background-color: rgb(238, 238, 238);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .one {
+      .logo {
+        font-size: 30px;
+        margin-right: 50px;
+        font-weight: bold;
+      }
+      .toggle {
+        display: none;
+      }
+    }
+    .menu {
+      width: 60%;
+      ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+
+        li {
+          margin-right: 30px;
+          cursor: pointer;
+        }
+        font-size: 22px;
+      }
+    }
+  }
+  @media screen and (max-width: 767px) {
+    .navbar {
+      .one {
+        .toggle {
+          display: inline-block;
+          position: absolute;
+          top: 40px;
+          right: 50px;
+          button {
+            padding: 8px 16px;
+            font-size: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+
+      .menu {
+        position: fixed;
+        top: 100px;
+        left: 0;
+        right: 0;
+        height: 0;
+        overflow: hidden;
+        background-color: rgb(238, 238, 238);
+        width: 100%;
+        ul {
+          flex-direction: column;
+          text-align: center;
+          li {
+            padding: 20px 0px;
+            border-top: 1px solid grey;
+            width: 100%;
+          }
+        }
+        transition: height 0.5s ease-in-out;
+        &.active {
+          height: 300px;
+        }
+      }
+    }
+  }
+
+  .hero-container {
+    width: 90%;
+    max-width: 1120px;
+    height: 50vh;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    margin: 50px auto;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0), #151515),
+      url('https://images.unsplash.com/photo-1473968512647-3e447244af8f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZHJvbmV8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1500&q=60')
+        no-repeat center center/cover;
+    // background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #151515);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .hero {
+      text-align: center;
+      .text {
+        font-size: 35px;
+        color: white;
+        font-weight: bold;
+      }
+      button {
+        padding: 12px 25px;
+        outline: none;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        font-size: 19px;
+        cursor: pointer;
+        background-color: rgba(73, 162, 105, 0.59);
+        transition: all 0.4s ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+      @media screen and (max-width: 767px) {
+        .text {
+          font-size: 25px;
+        }
+        button {
+          padding: 8px 16px;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+  .main-container {
+    display: flex;
+    justify-content: center;
+    .container {
+      width: 90vw;
+      //   background-color: rgb(172, 56, 56);
+      display: flex;
+      gap: 20px;
+      padding: 50px 0px;
+
+      @media screen and (max-width: 767px) {
+        flex-direction: column;
+        .left {
+          ul {
+            text-align: center;
+          }
+        }
+      }
+      .left {
+        flex: 1;
+        ul {
+          padding: 0;
+          margin: 0;
+          list-style-type: none;
+          li {
+            padding: 20px 0px;
+            cursor: pointer;
+            &:hover {
+              border-bottom: 1px solid grey;
+            }
+          }
+        }
+      }
+      .right {
+        flex: 5;
+        // background-color: rgb(107, 6, 57);
+        .item-container {
+          //   background-color: crimson;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5%;
+          .item {
+            box-sizing: border-box;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+              0 10px 10px rgba(0, 0, 0, 0.22);
+            width: 30%;
+            margin-bottom: 5%;
+            height: 300px;
+            border-radius: 10px;
+            padding: 15px;
+            img {
+              width: 100%;
+              height: 70%;
+              object-fit: cover;
+              border-radius: 5px;
+            }
+            .text-container {
+              height: 40%;
+              display: flex;
+              align-items: center;
+              justify-content: space-between;
+              .name {
+                font-size: 16px;
+              }
+              .price {
+                font-size: 20px;
+              }
+            }
+          }
+
+          @media screen and (max-width: 960px) {
+            .item {
+              width: 47.5%;
+            }
+          }
+          @media screen and (max-width: 767px) {
+            gap: 0px;
+            .item {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}
