@@ -1,8 +1,8 @@
 import { useRouteError } from "react-router-dom";
 import Header from "./Header";
 
-function ErrorComponent(props: any) {
-  const error = useRouteError();
+function ErrorComponent() {
+  const error: any = useRouteError();
   return (
     <div>
       <Header />
