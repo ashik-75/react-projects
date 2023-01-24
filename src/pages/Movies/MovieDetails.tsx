@@ -95,7 +95,7 @@ function MovieDetails() {
             <div className="space-x-2 flex">
               <div className="font-bold text-gray-600 w-16">Genre : </div>
               <div className="gap-3 flex flex-wrap">
-                {genres.map((genre: any) => (
+                {genres.slice(0, 4).map((genre: any) => (
                   <span className="bg-gray-100 px-2 py-[2px] rounded">
                     {genre?.name}
                   </span>
