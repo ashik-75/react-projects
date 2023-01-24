@@ -37,7 +37,7 @@ function MoviesPage() {
           name="category"
           id=""
           onChange={(e) => setCategory(e.target.value)}
-          className="px-8 py-2 font-poppins outline-none rounded"
+          className="px-8 py-2 font-poppins outline-none bg-slate-100 text-xl  border-r-[16px] border-solid border-transparent"
         >
           <option value="trending">Trending</option>
           <option value="popular">Popular</option>
