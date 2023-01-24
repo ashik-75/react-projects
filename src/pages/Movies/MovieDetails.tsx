@@ -179,13 +179,15 @@ function MovieDetails() {
 
           {/* link */}
           <div>
-            <a
-              className="underline underline-offset-2 font-semibold text-slate-700"
-              href={homepage}
-              target="_blank"
-            >
-              View Here
-            </a>
+            {homepage && (
+              <a
+                className="underline underline-offset-2 font-semibold text-slate-700"
+                href={homepage}
+                target="_blank"
+              >
+                View Here
+              </a>
+            )}
           </div>
         </div>
       </div>

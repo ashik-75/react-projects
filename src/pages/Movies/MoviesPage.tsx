@@ -17,8 +17,6 @@ function MoviesPage() {
     queryKey: ["movies", category],
     queryFn: fetchMovies,
     getNextPageParam: (latestPage, pages) => {
-      console.log({ latestPage, pages });
-
       return latestPage?.page ? latestPage.page + 1 : undefined;
     },
   });
