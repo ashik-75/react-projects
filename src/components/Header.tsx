@@ -1,6 +1,6 @@
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
 import { useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Search from "./Search";
 
 function Header() {
@@ -20,25 +20,6 @@ function Header() {
         </Link>
 
         <div className="flex items-center space-x-4">
-          <div className="hidden md:flex flex-col md:flex-row gap-5 text-slate-600 text-xl">
-            <NavLink
-              to={`/`}
-              className={({ isActive }) =>
-                `${isActive ? "font-bold text-slate-800" : ""}`
-              }
-            >
-              Movies
-            </NavLink>
-            <NavLink
-              to={`/help`}
-              className={({ isActive }) =>
-                `${isActive ? "font-bold text-slate-800" : ""}`
-              }
-            >
-              Help
-            </NavLink>
-          </div>
-
           <button onClick={() => setisOpen(true)}>
             <MagnifyingGlassIcon className="h-7 w-7" />
           </button>
