@@ -1,35 +1,27 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { UserCredential } from "firebase/auth";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/auth.services";
 
+type LoginType = {
+  email: string;
+  password: string;
+};
+
 function LoginForm() {
   const navigate = useNavigate();
-  const { data, mutateAsync, isLoading, isError, isSuccess, error, status } =
-    useMutation({
-      mutationKey: ["job"],
+  const { handleSubmit, register } = useForm();
+  const { mutateAsync, isLoading, isError, isSuccess, error, status } =
+    useMutation<UserCredential, Error, any, unknown>({
       mutationFn: loginUser,
     });
 
-  console.log({ status });
-
-  const [userInfo, setUserinfo] = useState({
-    email: "",
-    password: "",
-  });
-
-  //   destructure form property
-  const { email, password } = userInfo || {};
-
-  const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserinfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    // mutate(userInfo);
-    toast.promise(mutateAsync(userInfo), {
+  const onSubmit = (info: any) => {
+    console.log({ log: info });
+    toast.promise(mutateAsync(info), {
       loading: "Processing",
       success: "Successfully Registered",
       error: "something went wrong",
@@ -38,12 +30,6 @@ function LoginForm() {
 
   useEffect(() => {
     if (isSuccess) {
-      console.log("Is Succeed");
-      setUserinfo({
-        email: "",
-        password: "",
-      });
-
       navigate("/");
     }
   }, [isSuccess]);
@@ -53,26 +39,19 @@ function LoginForm() {
       <div>
         <h1 className="text-3xl font-bold text-slate-300">Login Page</h1>
       </div>
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <input
-            type="email"
-            value={email}
-            onChange={handleForm}
-            name="email"
+            {...register("email")}
             placeholder="email"
-            required
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
           />
         </div>
         <div>
           <input
+            {...register("password")}
             type="password"
-            value={password}
-            onChange={handleForm}
-            name="password"
             placeholder="password"
-            required
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
           />
         </div>

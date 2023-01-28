@@ -1,44 +1,26 @@
 import { useMutation } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { auth } from "../firebase";
 import { updateJobInfo } from "../services/job.services";
 
+import { useForm } from "react-hook-form";
+import { JobType } from "../types/job.types";
+
 function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
   const navigate = useNavigate();
   const [user] = useAuthState(auth);
+  const { handleSubmit, register } = useForm<JobType>();
   const { data, mutateAsync, isLoading, isError, isSuccess, error } =
-    useMutation({
-      mutationKey: ["job"],
+    useMutation<void, Error, any, unknown>({
       mutationFn: updateJobInfo,
     });
 
-  const [jobInfo, setJobInfo] = useState({
-    title: payload?.title || "",
-    salary: payload.salary || "",
-    location: payload.location || "",
-    description: payload.description || "",
-    type: payload.type || "",
-    email: user?.email,
-  });
-
-  //   destructure form property
-  const { title, description, salary, location, type } = jobInfo || {};
-
-  const handleForm = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLSelectElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-  ) => {
-    setJobInfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast.promise(mutateAsync({ jobId, jobInfo }), {
+  const onSubmit = (info: JobType) => {
+    const payload = { jobId, ...info, email: user?.email };
+    toast.promise(mutateAsync(payload), {
       loading: "Processing",
       success: "Successfully saved",
       error: "something went wrong",
@@ -47,28 +29,17 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
 
   useEffect(() => {
     if (isSuccess) {
-      setJobInfo({
-        title: "",
-        salary: "",
-        location: "",
-        description: "",
-        type: "",
-        email: "",
-      });
-
-      console.log({ data });
       navigate("/");
     }
   }, [isSuccess]);
 
   return (
     <div className="max-w-2xl">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <input
             type="text"
-            value={title}
-            onChange={handleForm}
+            {...register("title")}
             name="title"
             placeholder="title"
             required
@@ -78,8 +49,7 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
         <div>
           <input
             type="text"
-            value={location}
-            onChange={handleForm}
+            {...register("location")}
             name="location"
             placeholder="location"
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
@@ -87,9 +57,7 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
         </div>
         <div className="w-[50%] border rounded border-slate-400">
           <select
-            name="type"
-            value={type}
-            onChange={handleForm}
+            {...register("type")}
             className="w-full px-4 py-2 bg-transparent  border-r-[20px] border-transparent outline-none bg-slate-800"
           >
             <option className="bg-slate-800">Select Job Type ---</option>
@@ -108,8 +76,7 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
         <div>
           <input
             type="text"
-            value={salary}
-            onChange={handleForm}
+            {...register("salary")}
             name="salary"
             placeholder="500 usd/month"
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:text-slate-500 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
@@ -118,9 +85,7 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
 
         <div>
           <textarea
-            name="description"
-            value={description}
-            onChange={handleForm}
+            {...register("description")}
             rows={4}
             className="w-full bg-transparent border rounded border-slate-400  outline-none p-3"
             placeholder="job description here ..."
@@ -132,7 +97,7 @@ function EditJobForm({ payload, jobId }: { payload: object; jobId: any }) {
         </button>
       </form>
 
-      {isError && <div className="text-pink-700">{error?.message}</div>}
+      {isError && <div className="text-pink-700">{error.message}</div>}
     </div>
   );
 }

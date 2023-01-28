@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import { JobType } from "../../types/job.types";
 
 type JobPropsType = {
-  job: JobType;
+  job: any;
   authEmail?: string;
 };
 

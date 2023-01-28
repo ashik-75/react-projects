@@ -1,32 +1,42 @@
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useMutation } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
+import { UserCredential } from "firebase/auth";
+import { useEffect } from "react";
+import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
+import * as yup from "yup";
 import { registerUser } from "../services/auth.services";
 
+type ReType = {
+  email: string;
+  password: string;
+};
+
+const schema = yup
+  .object({
+    email: yup.string().email().required(),
+    password: yup.string().min(8).required(),
+  })
+  .required();
+
 function RegisterForm() {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<ReType>({
+    resolver: yupResolver(schema),
+  });
   const navigate = useNavigate();
   const { data, mutateAsync, isLoading, isError, isSuccess, error } =
-    useMutation({
+    useMutation<UserCredential, Error, any, unknown>({
       mutationKey: ["job"],
       mutationFn: registerUser,
     });
 
-  const [userInfo, setUserinfo] = useState({
-    email: "",
-    password: "",
-  });
-
-  //   destructure form property
-  const { email, password } = userInfo || {};
-
-  const handleForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUserinfo((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  };
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    toast.promise(mutateAsync(userInfo), {
+  const onSubmit = (data: ReType) => {
+    toast.promise(mutateAsync(data), {
       loading: "Processing",
       success: "Successfully Registered",
       error: "something wrong happen",
@@ -35,42 +45,31 @@ function RegisterForm() {
 
   useEffect(() => {
     if (isSuccess) {
-      setUserinfo({
-        email: "",
-        password: "",
-      });
-
-      console.log({ data });
       navigate("/");
     }
   }, [isSuccess]);
 
-  console.log({ err: error });
-
   return (
     <div className="space-y-10">
-      <form onSubmit={handleSubmit} className="space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div>
           <input
-            type="email"
-            value={email}
-            onChange={handleForm}
-            name="email"
+            {...register("email")}
             placeholder="email"
-            required
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
           />
+          <br />
+          <p className="text-pink-700">{errors.email?.message}</p>
         </div>
         <div>
           <input
             type="password"
-            value={password}
-            onChange={handleForm}
-            name="password"
+            {...register("password")}
             placeholder="password"
-            required
             className="w-full px-4 py-2 outline-none bg-transparent border border-slate-400 placeholder:capitalize placeholder:tracking-wide placeholder:text-base rounded"
           />
+          <br />
+          <p className="text-pink-700">{errors.password?.message}</p>
         </div>
 
         <button type="submit" className="px-4 py-2 border rounded">

@@ -5,6 +5,6 @@ export type JobType = {
   type: string;
   location: string;
   id: string;
-  email: string;
+  email?: string;
   createdAt: object;
 };
