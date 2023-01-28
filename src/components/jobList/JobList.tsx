@@ -5,17 +5,6 @@ import { getJobs } from "../../services/job.services";
 import JobSkeleton from "../skeleton/JobSkeleton";
 import Job from "./Job";
 
-type JobType = {
-  id: string;
-  title: string;
-  salary: string;
-  description: string;
-  type: string;
-  location: string;
-  email: string;
-  createdAt: object;
-};
-
 function JobList() {
   const [user, loading] = useAuthState(auth);
   const {
@@ -45,14 +34,16 @@ function JobList() {
     return <pre>{JSON.stringify(error)}</pre>;
   }
 
-  const items = data?.pages
-    ?.flatMap((item) => item)
+  const items = data.pages
+    .flatMap((item) => item)
     .map((dt) => {
       return dt.docs.map((job) => {
         return { ...job.data(), id: job.id };
       });
     })
     .flatMap((x) => x);
+
+  console.log({ items });
 
   return (
     <div className="space-y-5">
